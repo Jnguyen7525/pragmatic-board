@@ -3,6 +3,7 @@ import './globals.css';
 import { TopBar } from './top-bar';
 import { SettingsContextProvider } from '@/shared/settings-context';
 import { FathomAnalytics } from './fathom';
+import { FilterBar } from './filter-bar';
 
 export const metadata: Metadata = {
   title: 'Pragmatic board',
@@ -21,10 +22,11 @@ export default function RootLayout({
         <FathomAnalytics />
         <SettingsContextProvider>
           <TopBar />
+          {/* <FilterBar /> */}
           {/* position: absolute needed for max-height:100% to be respected internally */}
           <div className="relative flex-grow">
             <div className="absolute inset-0">
-              <main className="h-full bg-sky-700">{children}</main>
+              <main className="h-full w-screen overflow-x-hidden bg-zinc-900">{children}</main>
             </div>
           </div>
         </SettingsContextProvider>

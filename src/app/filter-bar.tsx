@@ -2,7 +2,7 @@
 
 import { SettingsContext } from '@/shared/settings-context';
 import { bindAll } from 'bind-event-listener';
-import { Code, PanelTopClose, PanelTopOpen, Settings, Zap } from 'lucide-react';
+import { Code, Menu, PanelTopClose, PanelTopOpen, Settings, User2, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useContext, useEffect, useRef, useState } from 'react';
@@ -17,9 +17,9 @@ const routes = {
   twoColumns: { title: 'Two Columns', href: '/two-columns' },
 } as const satisfies { [key: string]: TRoute };
 
-export function TopBar() {
+export function FilterBar() {
   const pathname = usePathname();
-  const [isTopBarExpanded, setIsTopBarExpanded] = useState<boolean>(true);
+  const [isFilterBarExpanded, setIsFilterBarExpanded] = useState<boolean>(true);
   const [isSettingsDialogOpen, setIsSettingsDialogOpen] = useState<boolean>(false);
   const settingsDialogRef = useRef<HTMLDivElement | null>(null);
   const settingsTriggerRef = useRef<HTMLButtonElement | null>(null);
@@ -38,7 +38,7 @@ export function TopBar() {
             setIsSettingsDialogOpen(false);
             return;
           }
-          setIsTopBarExpanded((current) => !current);
+          setIsFilterBarExpanded((current) => !current);
         },
       },
       {
@@ -69,7 +69,7 @@ export function TopBar() {
         },
       },
     ]);
-  }, [isTopBarExpanded, isSettingsDialogOpen]);
+  }, [isFilterBarExpanded, isSettingsDialogOpen]);
 
   return (
     <>
@@ -78,12 +78,20 @@ export function TopBar() {
       >
         <Link
           href={'/'}
-          className={`flex flex-shrink gap-[2px] rounded p-2 leading-none text-white sm:text-xl sm:leading-none`}
+          className={`flex-shrink rounded p-2 leading-none text-white sm:text-lg sm:leading-none`}
         >
-          <span>O</span> <span className="text-purple-500">Bo</span>
+          <span>board name</span>
         </Link>
         <div className="z-1 flex items-center justify-center gap-1">
-          {settings.isFPSPanelEnabled ? <FPSPanel /> : null}
+          <button
+            type="button"
+            ref={settingsTriggerRef}
+            className="rounded p-2 text-white"
+            onClick={() => setIsSettingsDialogOpen((current) => !current)}
+            aria-label="toggle top bar visibility"
+          >
+            <User2 size={24} />
+          </button>
 
           <button
             type="button"
@@ -92,9 +100,8 @@ export function TopBar() {
             onClick={() => setIsSettingsDialogOpen((current) => !current)}
             aria-label="toggle top bar visibility"
           >
-            <Settings size={24} />
+            <Menu size={24} />
           </button>
-          {isSettingsDialogOpen ? <SettingsDialog ref={settingsDialogRef} /> : null}
         </div>
       </header>
     </>

@@ -104,7 +104,7 @@ export const SettingsDialog = forwardRef<HTMLDivElement>(function SettingsDialog
 
   return (
     <div
-      className="absolute right-0 top-11 flex max-h-[60vh] w-80 flex-col overflow-y-auto rounded bg-slate-100"
+      className="absolute right-0 top-11 z-10 flex max-h-[60vh] w-80 flex-col overflow-y-auto rounded bg-slate-100"
       ref={ref}
     >
       <div className="flex select-none flex-col gap-2 p-2">

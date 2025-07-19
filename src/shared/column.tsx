@@ -216,7 +216,7 @@ export function Column({ column }: { column: TColumn }) {
   return (
     <div className="flex w-72 flex-shrink-0 select-none flex-col" ref={outerFullHeightRef}>
       <div
-        className={`flex max-h-full flex-col rounded-lg bg-slate-800 text-neutral-50 ${stateStyles[state.type]}`}
+        className={`flex max-h-full flex-col rounded-lg bg-zinc-950 text-neutral-50 ${stateStyles[state.type]}`}
         ref={innerRef}
         {...{ [blockBoardPanningAttr]: true }}
       >

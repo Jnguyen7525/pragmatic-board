@@ -1,5 +1,7 @@
 import { TBoard, TCard, TColumn } from '@/shared/data';
 import { Board } from '@/shared/board';
+import Sidebar from '../sidebar';
+import { FilterBar } from '../filter-bar';
 
 function getInitialData(): TBoard {
   // Doing this so we get consistent ids on server and client
@@ -18,15 +20,15 @@ function getInitialData(): TBoard {
   })();
 
   const columns: TColumn[] = [
-    { id: 'column:a', title: 'Column A', cards: getCards({ amount: 60 }) },
-    { id: 'column:b', title: 'Column B', cards: getCards({ amount: 4 }) },
-    { id: 'column:c', title: 'Column C', cards: getCards({ amount: 30 }) },
+    { id: 'column:a', title: 'Column A', cards: getCards({ amount: 10 }) },
+    { id: 'column:b', title: 'Column B', cards: getCards({ amount: 8 }) },
+    { id: 'column:c', title: 'Column C', cards: getCards({ amount: 8 }) },
     { id: 'column:d', title: 'Column D', cards: getCards({ amount: 12 }) },
     { id: 'column:e', title: 'Column E', cards: getCards({ amount: 0 }) },
-    { id: 'column:f', title: 'Column F', cards: getCards({ amount: 44 }) },
+    { id: 'column:f', title: 'Column F', cards: getCards({ amount: 4 }) },
     { id: 'column:g', title: 'Column G', cards: getCards({ amount: 4 }) },
     { id: 'column:h', title: 'Column H', cards: getCards({ amount: 8 }) },
-    { id: 'column:i', title: 'Column I', cards: getCards({ amount: 30 }) },
+    { id: 'column:i', title: 'Column I', cards: getCards({ amount: 9 }) },
   ];
 
   return {
@@ -35,5 +37,16 @@ function getInitialData(): TBoard {
 }
 
 export default function Page() {
-  return <Board initial={getInitialData()} />;
+  return (
+    <div className="flex h-full w-full">
+      <div className="bg-zinc-950">
+        <Sidebar />
+      </div>
+
+      <div className="scrollbar scrollbar-thumb-sky-700 scrollbar-track-sky-300 flex flex-col overflow-auto border-l border-zinc-900">
+        <FilterBar />
+        <Board initial={getInitialData()} />
+      </div>
+    </div>
+  );
 }
