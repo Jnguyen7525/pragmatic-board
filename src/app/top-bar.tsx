@@ -2,7 +2,7 @@
 
 import { SettingsContext } from '@/shared/settings-context';
 import { bindAll } from 'bind-event-listener';
-import { Code, PanelTopClose, PanelTopOpen, Settings, Zap } from 'lucide-react';
+import { Code, PanelTopClose, PanelTopOpen, Settings, Wand2, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useContext, useEffect, useRef, useState } from 'react';
@@ -78,13 +78,21 @@ export function TopBar() {
       >
         <Link
           href={'/'}
-          className={`flex flex-shrink gap-[2px] rounded p-2 leading-none text-white sm:text-xl sm:leading-none`}
+          className={`flex shrink gap-[2px] rounded p-2 leading-none text-white sm:text-xl sm:leading-none`}
         >
           <span>O</span> <span className="text-purple-500">Bo</span>
         </Link>
         <div className="z-1 flex items-center justify-center gap-1">
           {settings.isFPSPanelEnabled ? <FPSPanel /> : null}
-
+          <button
+            type="button"
+            ref={settingsTriggerRef}
+            className="rounded p-2 text-white"
+            onClick={() => setIsSettingsDialogOpen((current) => !current)}
+            aria-label="toggle top bar visibility"
+          >
+            <Wand2 size={24} />
+          </button>
           <button
             type="button"
             ref={settingsTriggerRef}

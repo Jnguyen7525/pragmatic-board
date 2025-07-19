@@ -343,7 +343,7 @@ export function Board({ initial }: { initial: TBoard }) {
   return (
     <div className={`flex h-full flex-col ${settings.isBoardMoreObvious ? 'px-32 py-20' : ''}`}>
       <div
-        className={`flex h-full flex-row gap-3 overflow-x-auto p-3 [scrollbar-color:theme(colors.sky.600)_theme(colors.sky.800)] [scrollbar-width:thin] ${settings.isBoardMoreObvious ? 'rounded border-2 border-dashed' : ''}`}
+        className={`flex h-full flex-row gap-3 overflow-x-auto p-3 [scrollbar-color:var(--color-sky-600)_var(--color-sky-800)] [scrollbar-width:thin] ${settings.isBoardMoreObvious ? 'rounded border-2 border-dashed' : ''}`}
         ref={scrollableRef}
       >
         {data.columns.map((column) => (

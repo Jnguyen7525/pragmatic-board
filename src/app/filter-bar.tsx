@@ -2,7 +2,18 @@
 
 import { SettingsContext } from '@/shared/settings-context';
 import { bindAll } from 'bind-event-listener';
-import { Code, Menu, PanelTopClose, PanelTopOpen, Settings, User2, Zap } from 'lucide-react';
+import {
+  Code,
+  Filter,
+  FilterIcon,
+  Menu,
+  PanelTopClose,
+  PanelTopOpen,
+  Search,
+  Settings,
+  User2,
+  Zap,
+} from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useContext, useEffect, useRef, useState } from 'react';
@@ -76,12 +87,13 @@ export function FilterBar() {
       <header
         className={`flex h-14 flex-row items-center justify-between gap-1 border-b border-zinc-900 bg-zinc-950 px-3`}
       >
-        <Link
-          href={'/'}
-          className={`flex-shrink rounded p-2 leading-none text-white sm:text-lg sm:leading-none`}
+        <div
+          className={`flex shrink gap-3 rounded p-2 leading-none text-white sm:text-lg sm:leading-none`}
         >
           <span>board name</span>
-        </Link>
+          <FilterIcon className="text-purple-500" />
+          <Search className="text-purple-500" />
+        </div>
         <div className="z-1 flex items-center justify-center gap-1">
           <button
             type="button"

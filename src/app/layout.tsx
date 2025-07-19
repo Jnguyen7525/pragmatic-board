@@ -24,7 +24,7 @@ export default function RootLayout({
           <TopBar />
           {/* <FilterBar /> */}
           {/* position: absolute needed for max-height:100% to be respected internally */}
-          <div className="relative flex-grow">
+          <div className="relative grow">
             <div className="absolute inset-0">
               <main className="h-full w-screen overflow-x-hidden bg-zinc-900">{children}</main>
             </div>

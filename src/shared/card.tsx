@@ -44,7 +44,7 @@ type TCardState =
 const idle: TCardState = { type: 'idle' };
 
 const innerStyles: { [Key in TCardState['type']]?: string } = {
-  idle: 'hover:outline outline-2 outline-neutral-50 cursor-grab',
+  idle: 'hover:outline-solid outline-2 outline-neutral-50 cursor-grab',
   'is-dragging': 'opacity-40',
 };
 
@@ -58,7 +58,7 @@ const outerStyles: { [Key in TCardState['type']]?: string } = {
 };
 
 export function CardShadow({ dragging }: { dragging: DOMRect }) {
-  return <div className="flex-shrink-0 rounded bg-slate-900" style={{ height: dragging.height }} />;
+  return <div className="shrink-0 rounded bg-slate-900" style={{ height: dragging.height }} />;
 }
 
 export function CardDisplay({
@@ -75,7 +75,7 @@ export function CardDisplay({
   return (
     <div
       ref={outerRef}
-      className={`flex flex-shrink-0 flex-col gap-2 px-3 py-1 ${outerStyles[state.type]}`}
+      className={`flex shrink-0 flex-col gap-2 px-3 py-1 ${outerStyles[state.type]}`}
     >
       {/* Put a shadow before the item if closer to the top edge */}
       {state.type === 'is-over' && state.closestEdge === 'top' ? (

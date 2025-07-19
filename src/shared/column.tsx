@@ -48,7 +48,7 @@ type TColumnState =
 
 const stateStyles: { [Key in TColumnState['type']]: string } = {
   idle: 'cursor-grab',
-  'is-card-over': 'outline outline-2 outline-neutral-50',
+  'is-card-over': 'outline-solid outline-2 outline-neutral-50',
   'is-dragging': 'opacity-40',
   'is-column-over': 'bg-slate-900',
 };
@@ -214,7 +214,7 @@ export function Column({ column }: { column: TColumn }) {
   }, [column, settings]);
 
   return (
-    <div className="flex w-72 flex-shrink-0 select-none flex-col" ref={outerFullHeightRef}>
+    <div className="flex w-72 shrink-0 select-none flex-col" ref={outerFullHeightRef}>
       <div
         className={`flex max-h-full flex-col rounded-lg bg-zinc-950 text-neutral-50 ${stateStyles[state.type]}`}
         ref={innerRef}
@@ -235,12 +235,12 @@ export function Column({ column }: { column: TColumn }) {
             </button>
           </div>
           <div
-            className="flex flex-col overflow-y-auto [overflow-anchor:none] [scrollbar-color:theme(colors.slate.600)_theme(colors.slate.700)] [scrollbar-width:thin]"
+            className="flex flex-col overflow-y-auto [overflow-anchor:none] [scrollbar-color:var(--color-slate-600)_var(--color-slate-700)] [scrollbar-width:thin]"
             ref={scrollableRef}
           >
             <CardList column={column} />
             {state.type === 'is-card-over' && !state.isOverChildCard ? (
-              <div className="flex-shrink-0 px-3 py-1">
+              <div className="shrink-0 px-3 py-1">
                 <CardShadow dragging={state.dragging} />
               </div>
             ) : null}
@@ -248,7 +248,7 @@ export function Column({ column }: { column: TColumn }) {
           <div className="flex flex-row gap-2 p-3">
             <button
               type="button"
-              className="flex flex-grow flex-row gap-1 rounded p-2 hover:bg-slate-700 active:bg-slate-600"
+              className="flex grow flex-row gap-1 rounded p-2 hover:bg-slate-700 active:bg-slate-600"
             >
               <Plus size={16} />
               <div className="leading-4">Add a card</div>

@@ -43,7 +43,7 @@ export default function Page() {
         <Sidebar />
       </div>
 
-      <div className="scrollbar scrollbar-thumb-sky-700 scrollbar-track-sky-300 flex flex-col overflow-auto border-l border-zinc-900">
+      <div className="flex flex-col overflow-auto border-l border-zinc-900">
         <FilterBar />
         <Board initial={getInitialData()} />
       </div>

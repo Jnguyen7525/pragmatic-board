@@ -16,11 +16,11 @@ function sidebar() {
           </div>
 
           <div className="flex items-center rounded-md bg-zinc-800 px-2 py-1 transition-colors duration-200 hover:bg-zinc-700">
-            <Search className="text-zinc-600" />
+            <Search className="text-zinc-500" size={18} />
             <input
               placeholder="Search..."
               type="text"
-              className="ml-1 flex h-full w-full bg-transparent outline-none"
+              className="ml-1 flex h-full w-full bg-transparent outline-hidden placeholder:text-zinc-500"
             />
           </div>
         </div>
